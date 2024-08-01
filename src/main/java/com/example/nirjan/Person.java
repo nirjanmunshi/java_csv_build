@@ -4,14 +4,51 @@ public class Person {
     private String name;
     private String email;
     private String phone;
+    private String fname;
+    private String lname;
+    private String fathersname;
+    private String address;
+    private String age;
+    
 
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getFathersname() {
+        return fathersname;
+    }
+
+    public void setFathersname(String fathersname) {
+        this.fathersname = fathersname;
+    }
 
     // Constructor
-    public Person(String name, String email, String phone) {
+    public Person(String name, String email, String phone,String fname,String lname,String fathersname,String address,String age) {
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.fname = fname;
+        this.lname = lname;
+        this.fathersname = fathersname;
+        this.address = address;
+        this.age = age;
     }
+
+  
 
     // Getters and Setters
     public String getName() {
@@ -40,7 +77,23 @@ public class Person {
     }
 
     public static String[] getHeaders() {
-        return new String[] { "Name", "Email", "Phone" };
+        return new String[] { "Name", "Email", "Phone","fname","lname","fathersname","address","age" };
+    }
+
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
     }
 }
 

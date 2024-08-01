@@ -1,0 +1,4 @@
+1 add 3 more headers in csv (firstname,lname,fathersname,address,ph no,age)
+2 print all the data from csv along with headers
+rename input.csv to person.csv
+add vehicle.csv3 3
