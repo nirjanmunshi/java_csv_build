@@ -12,6 +12,8 @@ import java.util.List;
 
 
 
+
+
 public  class FileCreator {
 
     /**
@@ -89,7 +91,7 @@ public  class FileCreator {
 
     // Method to write a list of names to a CSV file
     public void writeNamesToCSV(List<String> names, List<String> emails, String filePath) {
-        
+
         try (CSVWriter writer = new CSVWriter(new FileWriter(filePath, true))) {
 
             // Write the header only if the file does not already exist
@@ -105,6 +107,30 @@ public  class FileCreator {
             // Write names and emails to the CSV file
             for (int i = 0; i < names.size(); i++) {
                 writer.writeNext(new String[] { names.get(i), emails.get(i) });
+            }
+
+            System.out.println("Names written to CSV file successfully.");
+        } catch (IOException e) {
+            System.err.println("Error writing to CSV file.");
+            e.printStackTrace();
+        }
+    }
+    
+
+     // Method to write a list of names to a CSV file
+    public void writeNamesToCSV(List<Person> persons,String filePath) {
+        
+        try (CSVWriter writer = new CSVWriter(new FileWriter(filePath, true))) {
+
+            // Write the header only if the file does not already exist
+            if (isFileEmpty(filePath)) {
+                writer.writeNext(Person.getHeaders());
+            }
+
+        
+            // Write names and emails to the CSV file
+            for (int i = 0; i < persons.size(); i++) {
+                writer.writeNext(new String[] { persons.get(i).getName(), persons.get(i).getEmail(),persons.get(i).getPhone() });
             }
 
             System.out.println("Names written to CSV file successfully.");
