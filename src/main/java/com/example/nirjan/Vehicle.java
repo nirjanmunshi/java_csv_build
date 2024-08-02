@@ -7,6 +7,8 @@ public class Vehicle {
     private String cc;
 
 
+    
+
     // Constructor
     public Vehicle(String company, String model, String year, String cc) {
         this.company = company;
@@ -19,7 +21,6 @@ public class Vehicle {
     public static String[] vehicleHeaders() {
         return new String[] { "company", "moodel", "year", "cc" };
     }
-
 
     public String getCc() {
         return cc;
@@ -34,7 +35,6 @@ public class Vehicle {
         this.year = year;
     }
     
-    
     public String getModel() {
         return model;
     }
@@ -47,6 +47,11 @@ public class Vehicle {
     }
     public void setCompany(String company) {
         this.company = company;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle [company=" + company + ", model=" + model + ", year=" + year + ", cc=" + cc + "]";
     }
   
     

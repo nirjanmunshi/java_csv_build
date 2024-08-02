@@ -9,7 +9,22 @@ public class Person {
     private String fathersname;
     private String address;
     private String age;
-    
+
+
+
+
+
+    // Constructor
+    public Person(String name, String email, String phone,String fname,String lname,String fathersname,String address,String age) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.fname = fname;
+        this.lname = lname;
+        this.fathersname = fathersname;
+        this.address = address;
+        this.age = age;
+    }
 
 
     public String getAge() {
@@ -35,20 +50,6 @@ public class Person {
     public void setFathersname(String fathersname) {
         this.fathersname = fathersname;
     }
-
-    // Constructor
-    public Person(String name, String email, String phone,String fname,String lname,String fathersname,String address,String age) {
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.fname = fname;
-        this.lname = lname;
-        this.fathersname = fathersname;
-        this.address = address;
-        this.age = age;
-    }
-
-  
 
     // Getters and Setters
     public String getName() {
@@ -76,10 +77,6 @@ public class Person {
         this.phone = phone;
     }
 
-    public static String[] getHeaders() {
-        return new String[] { "Name", "Email", "Phone","fname","lname","fathersname","address","age" };
-    }
-
     public String getFname() {
         return fname;
     }
@@ -95,5 +92,16 @@ public class Person {
     public void setLname(String lname) {
         this.lname = lname;
     }
+
+    public static String[] getHeaders() {
+        return new String[] { "Name", "Email", "Phone","fname","lname","fathersname","address","age" };
+    }
+
+    @Override
+    public String toString() {
+        return "Person [name=" + name + ", email=" + email + ", phone=" + phone + ", fname=" + fname + ", lname="
+                + lname + ", fathersname=" + fathersname + ", address=" + address + ", age=" + age + "]";
+    }
+
 }
 

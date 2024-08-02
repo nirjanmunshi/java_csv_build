@@ -9,11 +9,6 @@ import java.util.List;
 
 
 
-
-
-
-
-
 public  class FileCreator {
 
     /**
@@ -90,7 +85,7 @@ public  class FileCreator {
 
 
     // Method to write a list of names to a CSV file
-    public void writeNamesToCSV(List<String> mfgCompany, List<String> model,List<String> mfgYear,List<String> vehicleType,List<String> cc,List<String> milage, String filePath) {
+    public void writeVehicleToCsv(List<String> mfgCompany, List<String> model,List<String> mfgYear,List<String> vehicleType,List<String> cc,List<String> milage, String filePath) {
 
         try (CSVWriter writer = new CSVWriter(new FileWriter(filePath, true))) {
 
@@ -122,7 +117,7 @@ public  class FileCreator {
     
 
      // Method to write a list of names to a CSV file
-    public void writeNamesToCSV(List<Vehicle> cars,String filePath) {
+    public void writeVehicleToCsv(List<Vehicle> cars,String filePath) {
         
         try (CSVWriter writer = new CSVWriter(new FileWriter(filePath, true))) {
 
@@ -137,7 +132,10 @@ public  class FileCreator {
                 String arr[] = new String[] { cars.get(i).getCompany(), cars.get(i).getModel(), cars.get(i).getYear(),
                         cars.get(i).getCc() };
                 writer.writeNext(arr);
-                System.out.println(arr);
+
+                
+                System.out.println(cars.get(i).toString());
+                
             }
 
             System.out.println("Names written to CSV file successfully.");
