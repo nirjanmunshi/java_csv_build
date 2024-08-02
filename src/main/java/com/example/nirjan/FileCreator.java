@@ -90,23 +90,26 @@ public  class FileCreator {
 
 
     // Method to write a list of names to a CSV file
-    public void writeNamesToCSV(List<String> names, List<String> emails,List<String> phones,List<String> fnames,List<String> lnames,List<String> fathersnames,List<String> addresses,List<String> ages, String filePath) {
+    public void writeNamesToCSV(List<String> mfgCompany, List<String> model,List<String> mfgYear,List<String> vehicleType,List<String> cc,List<String> milage, String filePath) {
 
         try (CSVWriter writer = new CSVWriter(new FileWriter(filePath, true))) {
 
             // Write the header only if the file does not already exist
             if (isFileEmpty(filePath)) {
-                writer.writeNext(new String[] { "Name", "Email" ,"Phone","fname","lname","fathersname","address","age"});
+                writer.writeNext(new String[] { "Mfg_Company", "Model" ,"Mfg_year","Vehicle_type","CC","Milage"});
             }
 
             // Ensure names and emails lists are of the same size
-            if (names.size() != emails.size()) {
+            if (mfgCompany.size() != model.size()) {
                 throw new IllegalArgumentException("Names and emails lists must be of the same size.");
             }
 
             // Write names and emails to the CSV file
-            for (int i = 0; i < names.size(); i++) {
-                writer.writeNext(new String[] { names.get(i), emails.get(i),phones.get(i) ,fnames.get(i),lnames.get(i),fathersnames.get(i),addresses.get(i),ages.get(i)});
+            for (int i = 0; i < mfgCompany.size(); i++) {
+                String arr[] = (new String[] { mfgCompany.get(i), model.get(i), mfgYear.get(i), vehicleType.get(i),
+                        cc.get(i), milage.get(i) });
+                writer.writeNext(arr);
+                System.out.println(arr);
             }
 
             System.out.println("Names written to CSV file successfully.");
@@ -119,19 +122,22 @@ public  class FileCreator {
     
 
      // Method to write a list of names to a CSV file
-    public void writeNamesToCSV(List<Person> persons,String filePath) {
+    public void writeNamesToCSV(List<Vehicle> cars,String filePath) {
         
         try (CSVWriter writer = new CSVWriter(new FileWriter(filePath, true))) {
 
             // Write the header only if the file does not already exist
             if (isFileEmpty(filePath)) {
-                writer.writeNext(Person.getHeaders());
+                writer.writeNext(Vehicle.vehicleHeaders());
             }
 
         
             // Write names and emails to the CSV file
-            for (int i = 0; i < persons.size(); i++) {
-                writer.writeNext(new String[] { persons.get(i).getName(), persons.get(i).getEmail(),persons.get(i).getPhone(),persons.get(i).getFname(),persons.get(i).getLname(),persons.get(i).getFathersname(),persons.get(i).getAddress(),persons.get(i).getAge() });
+            for (int i = 0; i < cars.size(); i++) {
+                String arr[] = new String[] { cars.get(i).getCompany(), cars.get(i).getModel(), cars.get(i).getYear(),
+                        cars.get(i).getCc() };
+                writer.writeNext(arr);
+                System.out.println(arr);
             }
 
             System.out.println("Names written to CSV file successfully.");

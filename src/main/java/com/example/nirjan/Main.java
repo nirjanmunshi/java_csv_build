@@ -1,4 +1,8 @@
 package com.example.nirjan;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,28 +12,21 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String outputFileName = "input";
+        String outputFileName = "vehicle";
         String fileExt = ".csv";
 
-        String[] nameArray = { "Alice", "Bob", "Charlie", "David", "Eve" };
-        String[] emailArray = { "Alice@gmail.com", "Bob@gmail.com", "Charlie@gmail.com", "David@gmail.com",
-                "Eve@gmail.com" };
-        String[] phoneArray = { "123-456-7890", "234-567-8901", "345-678-9012", "456-789-0123", "567-890-1234" };
-        String[] fnameArray = { "Alice", "Bob", "Charlie", "David", "Eve" };
-        String[] lnameArray = { "Warner", "Marley", "Chaplin", "Jones", "Anderson" };
-        String[] fathersnameArray = { "Jhon", "Kane", "Henry", "Billy", "kevin" };
-        String[] addressArray = { "6 Beadon street", "3 gulf avenue", "5/9 Symphony tower", "32,1,A freezcruise streer",
-                "6 Boston island" };
-        String[] ageArray = { "24", "53", "29", "64", "37" };
+        String[] companyArray = { "Tata", "Hyundai", "Maruti", "Honda", "Kia" };
+        String[] moddelArray = { "Harrier", "Creta", "WagonR", "Honda city", "Duster" };
+        String[] yearArray = { " 2015", "2017", "2010", "2008", "2020" };
+        String[] ccArray = { "1800", "1600", "700", "1050", "1300" };
 
         // Create a list to store Person objects
-        List<Person> personList = new ArrayList<>();
+        List<Vehicle> vehicleList = new ArrayList<>();
 
         // Populate the list with Person objects
-        for (int i = 0; i < nameArray.length; i++) {
-            Person person = new Person(nameArray[i], emailArray[i], phoneArray[i], fnameArray[i], lnameArray[i],
-                    fathersnameArray[i], addressArray[i], ageArray[i]);
-            personList.add(person);
+        for (int i = 0; i < companyArray.length; i++) {
+            Vehicle car = new Vehicle(companyArray[i], moddelArray[i], yearArray[i], ccArray[i]);
+            vehicleList.add(car);
         }
 
         FileCreator f = new FileCreator();
@@ -39,21 +36,61 @@ public class Main {
         System.out.println(filePath);
 
         // f.writeNamesToCSV(Arrays.asList(nameArray), Arrays.asList(emailArray), filePath);
-        f.writeNamesToCSV(personList, filePath);
-        String[] abc = Person.getHeaders();
-        for (String item : abc) {
-            System.out.print(item + " ");
-        }
-        System.out.println();
+        f.writeNamesToCSV(vehicleList, filePath);
+        //ReadCSVExample.main(args);//
+       
 
-      
-
-            }
-        }
         // createFolder();
         // createFile();
+    }
     
+    // to rename the file //
+    public class RenameFileExample {
+        public static void main(String[] args) {
+            // Step 1: Create a File object representing the original file
+            File originalFile = new File("D:\\project\\java\\src\\main\\resources\\output\\vehicle.csv");
+
+            // Step 2: Create a File object representing the new file name or location
+            File renamedFile = new File("D:\\project\\java\\src\\main\\resources\\output\\vehicledata.csv");
+
+            // Step 3: Rename the file using the renameTo() method
+            boolean success = originalFile.renameTo(renamedFile);
+
+            if (success) {
+                System.out.println("File renamed successfully!");
+            } else {
+                System.out.println("Failed to rename the file.");
+            }
+        }
+    }
     
+    // to read data from csv file//
+
+
+    public class ReadCSVExample {
+    public static void main(String[] args) {
+        // Path to the CSV file
+        String csvFile = "D:\\\\project\\\\java\\\\src\\\\main\\\\resources\\\\output\\\\vehicledata.csv";
+        String line = "";
+        String csvSeparator = ",";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+            while ((line = br.readLine()) != null) {
+                // Split the line into values based on the separator
+                String[] values = line.split(csvSeparator);
+
+                // Print each value
+                for (String value : values) {
+                    System.out.print(value + " ");
+                }
+                System.out.println(); // Move to the next line after each record
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
     
 
     
@@ -108,3 +145,4 @@ public class Main {
 
         
     // }
+}
